@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hall View</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+
+    td {
+      width: 40px;
+      height: 40px;
+      border: 1px solid gray;
+      text-align: center;
+      vertical-align: middle;
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  {% for hall in halls %}
+    <h3>Hall {{ hall.hall }}</h3>
+    <table>
+      {% for row in range(hall.NoOfRows) %}
+        <tr>
+          {% for column in range(hall.NoOfColumn) %}
+            <td>{{ row * hall.NoOfColumn + column + 1 }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+  {% endfor %}
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in & Sign up Form</title>
+    <link rel="stylesheet" href="static/login.css"/>
+  </head>
+  <body>
+    <main>
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <form  action="/" method="post" class="sign-in-form">
+                {% csrf_token %}
+                <div class="logo">
+                    <img src="static/images/logo.jpg" alt="easyclass" />
+                    <h4>MIT ADT UNIVERSITY</h4>
+                </div>
+            
+                <div class="heading">
+                    <h2>Admin Login</h2>
+                    <h6>Are You Student!</h6>
+                    <a href="#" class="toggle">Student Login</a>
+                </div>
+            
+                <div class="actual-form">
+                    <div class="input-wrap">
+                        <input
+                            type="text"
+                            minlength="4"
+                            class="input-field"
+                            autocomplete="off"
+                            required
+                            name="username"  
+                        />
+                        <label>Username</label>
+                    </div>
+            
+                    <div class="input-wrap">
+                        <input
+                            type="password"
+                            minlength="4"
+                            class="input-field"
+                            autocomplete="off"
+                            required
+                            name="password"  
+                        />
+                        <label>Password</label>
+                    </div>
+            
+                    <input type="submit" value="Sign In" class="sign-btn" />
+                </div>
+            </form>
+            
+            <form action="{% url 'login' %}" method="post" autocomplete="off" class="sign-up-form">
+                {%csrf_token%}
+                <div class="logo">
+                    <img src="static/images/logo.jpg" alt="easyclass" />
+                    <h4>MIT ADT UNIVERSITY</h4>
+                </div>
+
+                <div class="heading">
+                    <h2>Student Login</h2>
+                    <h6>Are you admin!</h6>
+                    <a href="#" class="toggle">Admin Login</a>
+                </div>
+
+                <div class="actual-form">
+                    <div class="input-wrap">
+                        <input
+                            type="text"
+                            minlength="4"
+                            class="input-field"
+                            autocomplete="off"
+                            required
+                            name="username"  
+                        />
+                        <label>Username</label>
+                    </div>
+
+                    <div class="input-wrap">
+                        <input
+                            type="password"
+                            minlength="4"
+                            class="input-field"
+                            autocomplete="off"
+                            required
+                            name="password"  
+
+                        />
+                        <label>Password</label>
+                    </div>
+
+                    <input type="submit" value="Sign In" class="sign-btn" />
+
+                {% comment %} <p class="text">
+                  By signing up, I agree to the
+                  <a href="#">Terms of Services</a> and
+                  <a href="#">Privacy Policy</a>
+                </p> {% endcomment %}
+                </div>
+            </form>
+          </div>
+
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img src="static/images/3.jpg" class="image img-1 show" alt="" />
+              <img src="static/images/2.jpg" class="image img-2" alt="" />
+              <img src="static/images/1.jpg" class="image img-3" alt="" />
+            </div>
+
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>MIT ADT University</h2>
+                  <h2>MIT ADT University</h2>
+                  <h2>MIT ADT University</h2>
+                </div>
+              </div>
+
+              <div class="bullets">
+                <span class="active" data-value="1"></span>
+                <span data-value="2"></span>
+                <span data-value="3"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Javascript file -->
+
+    <script src="static/app.js"></script>
+  </body>
+</html>

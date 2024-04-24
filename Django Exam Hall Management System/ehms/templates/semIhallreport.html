@@ -1,0 +1,114 @@
+
+
+<style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  
+    body {
+      margin: 20px;
+      font-family: Arial, sans-serif;
+    }
+  
+    .container {
+      border: 2px solid #000; /* Add border to the container */
+      margin-bottom: 20px; /* Adjust margin-bottom to separate from the next element */
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+  
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 2px solid #000;
+      border-right: 2px solid #000;
+    }
+  
+    th:last-child,
+    td:last-child {
+      border-right: none;
+    }
+  
+    th {
+      /* background-color: #f7f7f7; */
+    }
+  
+    tr:nth-child(even) {
+      /* background-color: #f7f7f7; */
+    }
+  
+    .header {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 8px;
+      margin-top: 5px;
+      border-bottom: 2px solid #000;
+    }
+  
+    td {
+      font-size: 10px; /* Reduce the font size for table content */
+    }
+    th {
+      font-size: 10px; /* Reduce the font size for table content */
+    }
+  </style>
+  
+    
+    <body>
+      <div class="container">
+        {%for row in header_details%}
+        <div class="header">
+          MIT School of Engineering, Pune
+        </div>
+        <div class="header">
+            Semester End Examination :{{row.0}}-{{row.1}} (I-Sem) Academic Year : {{row.2}}
+        </div>
+        <div class="header">
+            Program:{{row.3}}. First Year Students Seating Arrangment
+        </div>
+        <div class="header">
+            Date:{{row.4}} to {{row.5}}  Time: {{row.6}} to {{row.7}} 
+        </div>
+        {% endfor %}
+        <table>
+          <tr>
+            <th>Branch</th>
+            <th>Batch Year</th>
+            <th>Specialization</th>
+            <th>Roll Number</th>
+            <th>ClassRoom No</th>
+            <th>Hall No</th>
+            <th>Sr No</th>
+            <th>Desk No</th>
+            <th>Enrollment No</th>
+            <th>Name</th>
+          </tr>
+          {% for row in hall_report %}
+          <tr>
+            <td>{{ row.1 }}</td>
+            <td>{{ row.2 }}</td>
+            <td>{{ row.3 }}</td>
+            <td>{{ row.4 }}</td>
+            <td>{{ row.5 }}-{{row.6}}</td>
+            <td>{{ row.0 }}</td>
+            <td>{{ row.7 }}</td>
+            <td>{{ row.8 }}</td>
+            <td>{{ row.9 }}</td>
+            <td>{{ row.10 }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    
+      <table>
+        <!-- Additional table content here -->
+      </table>
+    
+      <a href="download" class="download-button">Download Report</a>
+    </body>
+    

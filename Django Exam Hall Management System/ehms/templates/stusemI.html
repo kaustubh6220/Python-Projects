@@ -1,0 +1,204 @@
+{% extends 'adminbase.html' %}
+{% block body %}
+<style>
+    .main_content {
+        margin-left: 100px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .main_content h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 20px;
+        justify-items: center;
+    }
+
+    .category_box {
+        width: 100%;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #d1d1d1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #f1f1f1;
+    }
+
+    .box_color_1 { background-color: #0275d8; } 
+    .box_color_2 { background-color: #d9534f; } 
+    .box_color_3 { background-color: #5cb85c; } 
+    .box_color_4 { background-color: #f0ad4e; } 
+    .box_color_5 { background-color: #292b2c; } 
+    .box_color_6 { background-color: #5bc0de; }
+
+    .category_box a {
+        text-decoration: none;
+        color: #f1f1f1;
+    }
+
+    /* New styles for Choose File and Upload */
+    .choose-file-form {
+        display: flex;
+        align-items: center;
+    }
+
+    .choose-file-label {
+        margin-right: 10px;
+    }
+
+    input[type='submit'], input[type='file'] {
+        width: 150px;
+        height: 45px;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0275d8;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #f1f1f1;
+    }
+
+    @media (max-width: 768px) {
+        .categories {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-gap: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .main_content {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .categories {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 10px;
+        }
+    }
+
+    .container {
+        border: 2px solid #000; /* Add border to the container */
+        margin-bottom: 20px; /* Adjust margin-bottom to separate from the next element */
+      }
+    table {
+        margin-top:20px;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-color:d7d7d7;
+      }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 2px solid #000;
+        border-right: 2px solid #000;
+      }
+    
+      th:last-child,
+      td:last-child {
+        border-right: none;
+      }
+    
+      th {
+        background-color: #f7f7f7; 
+      }
+    
+      tr:nth-child(odd) {
+        background-color: #f7f7f7; 
+      }
+    
+      .header {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 8px;
+        margin-top: 5px;
+        border-bottom: 2px solid #000;
+      }
+    
+      td {
+        font-size: 12px; /* Reduce the font size for table content */
+      }
+      th {
+        font-size: 12px; /* Reduce the font size for table content */
+      }
+</style>
+<section class="home-section">
+    <div class="main_content">        
+        <div class="categories">
+            <div class="category_box box_color_5"><a href="static/student_details.csv" download>Click to download Template For Student Data</a></div>
+
+            <form action='semIstudata' method='POST' enctype='multipart/form-data' class="choose-file-form">
+                {% csrf_token %}
+                <input type='file' name='file' required accept='.csv'>
+                <!-- Remove the Choose File label -->
+                <input type='submit' value='Upload' id="upload-btn"> <!-- Add ID to the Upload button -->
+            </form>
+            
+            <form action='deletesemIstu' enctype='multipart/form-data'>
+                {% csrf_token %}            
+                <div class="category_box box_color_2">
+                    <label for='deletesemIstu'>Delete Data</label>
+                    <input type="submit" id="deletesemIstu" style="display: none;">
+                </div>
+            </form> 
+        </div>
+        <table>
+            <tr>
+                <th>SrNo</th>
+                <th>Branch</th>
+                <th>Year</th>
+                <th>Specialization</th>
+                <th>RollNo</th>
+                <th>EnrollmentNo</th>
+                <th>Name</th>
+
+                <!-- Add more table headers for additional fields -->
+            </tr>
+            {% for student in semistudent %}
+            <tr>
+                <td>{{student.6}}</td>
+                <td>{{ student.0}}</td>
+                <td>{{ student.1}}</td>
+                <td>{{ student.2 }}</td>
+                <td>{{ student.3 }}</td>
+                <td>{{ student.4 }}</td>
+                <td>{{ student.5 }}</td>
+
+                <!-- Add more table cells for additional fields -->
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</section>
+<div id="file-upload-info"></div>
+<script>
+    document.getElementById("file-upload").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            // Here, you can do whatever you want with the selected file, like uploading it to a server.
+            // For demonstration purposes, let's show an alert with the file name.
+            alert("CSV file uploaded successfully: " + file.name);
+            
+            // You can also display the file name on the webpage.
+            const fileNameElement = document.createElement("p");
+            fileNameElement.textContent = "Selected CSV file: " + file.name;
+            document.getElementById("file-upload-info").appendChild(fileNameElement);
+        }
+    });
+</script>
+{% endblock body %}

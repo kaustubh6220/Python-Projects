@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MIT</title>
+  <!-- Link Styles -->
+  <link rel="stylesheet" href="static/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo_details">
+      <i class="bx bxl-audible icon"></i>
+      <div class="logo_name">Admin Dashboard</div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      
+      <li>
+        <a href="#">
+          <i class="bx bx-grid-alt"></i>
+          <span class="link_name">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-user"></i>
+          <span class="link_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
+      <li>
+        <a href="catagory.html">
+          <i class="bx bx-book-content"></i>
+          <span class="link_name">Category</span>
+        </a>
+        <span class="tooltip">Catagory</span>
+      </li>
+      <li>
+        {% comment %} <a href="#">
+          <i class="bx bx-pie-chart-alt-2"></i>
+          <span class="link_name">Analytics</span>
+        </a>
+        <span class="tooltip">Analytics</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-folder"></i>
+          <span class="link_name">File Manger</span>
+        </a>
+        <span class="tooltip">File Manger</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-cart-alt"></i>
+          <span class="link_name">Order</span>
+        </a>
+        <span class="tooltip">Order</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-cog"></i>
+          <span class="link_name">Settings</span>
+        </a>
+        <span class="tooltip">Settings</span>
+      </li>
+      <li> {% endcomment %}
+        <a href="{%url "logout"%}">
+          <i class="bx bx-log-out"></i>
+          <span class="link_name">Logout</span>
+        </a>
+        <span class="tooltip">Logout</span>
+      </li>
+      <li class="profile">
+        <div class="profile_details">
+          <img src="static/images/admin.png" alt="profile image">
+          <div class="profile_content">
+            <div class="name"> {{ request.user }}</div>
+            <div class="designation">Admin</div>
+          </div>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+
+  {%block body%} {% endblock body%}
+  <!-- Scripts -->
+  <script src="static/script.js"></script>
+</body>
+</html>

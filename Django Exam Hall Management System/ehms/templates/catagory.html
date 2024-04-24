@@ -1,0 +1,80 @@
+{% extends 'adminbase.html' %}
+{%block body%}
+<style>
+    
+    .main_content {
+        margin-left: 100px; /* To accommodate the width of the sidebar */
+        padding: 20px;
+        text-align: center; /* To center the categories */
+    }
+
+    .main_content h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .categories {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .category_box {
+        flex-basis: calc(33.33% - 20px); /* Maximum 3 boxes in a row with margin */
+
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #d1d1d1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        text-color:#f1f1f1;
+    }
+    .box_color_1 { background-color: #0275d8; } 
+    .box_color_2 { background-color: #d9534f; } 
+    .box_color_3 { background-color: #5cb85c; } 
+    .box_color_4 { background-color: #f0ad4e; } 
+    .box_color_5 { background-color: #292b2c; } 
+    .box_color_6 { background-color: #5bc0de; }
+    .category_box a {
+        text-decoration: none;
+        color: white; /* Set text color to white */
+    }
+    @media (max-width: 768px) {
+        .category_box {
+            flex-basis: calc(50% - 20px); /* Maximum 2 boxes in a row with margin */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .category_box {
+            flex-basis: 100%; /* 1 box per row for smaller screens */
+        }
+    }
+</style>
+  <section class="home-section">
+    <div class="text">Category</div>
+    <div class="main_content">
+        
+        <div class="categories">
+            <div class="category_box box_color_5"><a href="studentdata.html">Upload Student Data</a></div>
+            <div class="category_box box_color_1"><a href="halldata.html">Upload Hall Data</a></div>
+            <div class="category_box box_color_2"><a href="hallreport.html">Hall Report</a></div>
+            <div class="category_box box_color_3"><a href="#">Invigilator Report</a></div>
+            <div class="category_box box_color_4"><a href="#">Hall Ticket</a></div>
+            <div class="category_box box_color_6"><a href="#">Exam Schedule</a></div>
+
+        </div>
+    </div>
+  </section>
+  
+
+
+
+<script src="static/script.js"></script>
+{%endblock body%}
